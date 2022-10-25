@@ -4,5 +4,6 @@
 3. Run `php artisan migrate` to migrate DB table
 4. Website will be appear in route `http://127.0.0.1:8000/tasks`
 5. Website will only get current session user data
+6. Added complete function for updating current task status
 
 <!-- Created by Rex You -->
