@@ -22,13 +22,25 @@
                 <div class="text-sm border-solid border-2 border-red-600 px-3 py-2 rounded-md my-3">
                     <span>Task {{ $task->id }}</span>
                     <p>{{ $task->task_description }}</p>
-                    <span>Created at {{ $task->created_at }}</span>
+                    <p>Created at {{ $task->created_at }}</p>
+                    @if ($task->complete_status == 0)
+                        <p>Status : Pending</p>
+                    @else
+                        <p>Status : Complete</p>
+                    @endif
                     <div>
                         <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" class="w-full">
                             @csrf
                             @method('delete')
                             <button type="submit" class="bg-red-600 rounded-md px-3 py-2 text-black w-full mt-5">Delete</button>
                         </form>
+                        @if ($task->complete_status == 0)
+                            <form action="/tasks/{{ $task->id }}" method="POST" class="w-full">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="bg-green-500 rounded-md px-3 py-2 text-white w-full mt-2">Complete</button>
+                            </form>
+                        @endif
                     </div>
                 </div>
             @empty

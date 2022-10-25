@@ -91,7 +91,12 @@ class TodolistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $todolist = Todolist::where('id', $id)->update([
+            'complete_status'=> 1
+        ]);
+
+        return redirect('/tasks');
     }
 
     /**
@@ -108,4 +113,5 @@ class TodolistController extends Controller
 
         return redirect('/tasks');
     }
+    
 }

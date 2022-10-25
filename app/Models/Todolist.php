@@ -11,5 +11,5 @@ class Todolist extends Model
 
     protected $primaryKey = 'id';
     
-    protected $fillable = ['task_description', 'session_id'];
+    protected $fillable = ['task_description', 'complete_status', 'session_id'];
 }
